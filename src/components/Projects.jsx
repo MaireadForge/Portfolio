@@ -1,23 +1,28 @@
-export default function Projects({ projectsSectionRef }) {
+export default function Projects() {
   return (
     <section
       id="projects"
-      ref={projectsSectionRef}
       style={{
         background: "#eeeeee",
-        minHeight: "100vh",
-        borderTop: "1px solid #e5e5e5",
+        height: "100vh",
         position: "relative",
-        padding: "60px 60px 100px",
+        padding: "80px 60px 40px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
       }}
     >
-      {/* Header */}
-      <div style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "flex-end",
-        marginBottom: 60,
-      }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "flex-end",
+          marginBottom: 40,
+          width: "100%",
+          maxWidth: "1200px",
+          margin: "0 auto 40px",
+        }}
+      >
         <div>
           <div style={{
             fontSize: 10, color: "#aaa",
@@ -28,9 +33,9 @@ export default function Projects({ projectsSectionRef }) {
           </div>
           <h2 style={{
             fontFamily: "'DM Sans', sans-serif",
-            fontSize: "clamp(40px, 6vw, 72px)",
+            fontSize: "clamp(40px, 5vw, 64px)",
             fontWeight: 800, color: "#0f172a",
-            letterSpacing: "-3px", lineHeight: 1,
+            letterSpacing: "-2px", lineHeight: 1,
           }}>
             Latest Projects
           </h2>
@@ -38,21 +43,23 @@ export default function Projects({ projectsSectionRef }) {
         <a href="#" style={{
           fontFamily: "'DM Sans', sans-serif",
           fontSize: 13, color: "#555",
-          textDecoration: "none",
-          borderBottom: "1px solid #aaa",
+          textDecoration: "none", borderBottom: "1px solid #aaa",
           paddingBottom: 2,
         }}>
           View All →
         </a>
       </div>
 
-      {/* Empty grid slots — cards fly here from Hero via GSAP in App.jsx */}
+      {/* Dynamic Grid Coordinates */}
       <div
         id="projects-grid"
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
-          gap: 20,
+          gap: 30,
+          width: "100%",
+          maxWidth: "1200px",
+          margin: "0 auto",
         }}
       >
         {[0, 1, 2, 3].map((i) => (
@@ -61,9 +68,9 @@ export default function Projects({ projectsSectionRef }) {
             id={`grid-slot-${i}`}
             style={{
               aspectRatio: "16/10",
-              borderRadius: 16,
-              background: "rgba(0,0,0,0.04)",
-              border: "1px dashed #ddd",
+              borderRadius: 18,
+              background: "transparent", // Completely invisible box anchors
+              position: "relative",
             }}
           />
         ))}
