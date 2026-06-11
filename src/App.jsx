@@ -5,6 +5,8 @@ import useLenis from "./hooks/useLenis";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
+import Experience from "./components/Experience"; // Added Import
+import Skills from "./components/Skills";         // Added Import
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,6 +21,8 @@ export default function App() {
   useLenis(); 
 
   const containerRef = useRef(null);
+  const experienceRef = useRef(null); // Ref for Experience Section
+  const skillsRef = useRef(null);     // Ref for Skills Section
   const cardRefs = useRef([]);
 
   useEffect(() => {
@@ -28,6 +32,7 @@ export default function App() {
 
     if (!cards.length || !slots[0] || !deckAnchor || !containerRef.current) return;
 
+    // 1. YOUR PERFECT PROJECTS PINNED TIMELINE
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
@@ -64,8 +69,49 @@ export default function App() {
       );
     });
 
+    // 2. UNIQUE ANIMATION FOR EXPERIENCE: Horizontal Scroll Track Panel
+    const expTrack = document.getElementById("experience-track");
+    if (expTrack && experienceRef.current) {
+      const totalScrollWidth = expTrack.scrollWidth - window.innerWidth + 120; // 120px to account for paddings
+      
+      gsap.to(expTrack, {
+        x: -totalScrollWidth,
+        ease: "none",
+        scrollTrigger: {
+          trigger: experienceRef.current,
+          start: "top top",
+          end: () => `+=${totalScrollWidth}`,
+          pin: true, 
+          scrub: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+    }
+
+    // 3. UNIQUE ANIMATION FOR SKILLS: 3D Pop & Stagger Rise up
+    const skillPills = document.querySelectorAll(".skill-pill");
+    if (skillPills.length && skillsRef.current) {
+      gsap.fromTo(
+        skillPills,
+        { opacity: 0, y: 60, scale: 0.9, rotationX: -15 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          rotationX: 0,
+          stagger: 0.03,
+          ease: "back.out(1.2)",
+          scrollTrigger: {
+            trigger: skillsRef.current,
+            start: "top 60%", 
+            end: "top 20%",
+            scrub: 1,
+          },
+        }
+      );
+    }
+
     return () => {
-      tl.kill();
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
@@ -74,6 +120,7 @@ export default function App() {
     <>
       <Navbar />
       
+      {/* PERFECT HERO + PROJECTS WRAPPER (Stays 100% Unchanged) */}
       <div ref={containerRef} style={{ position: "relative", width: "100%", overflow: "hidden" }}>
         <Hero />
         <Projects />
@@ -97,7 +144,6 @@ export default function App() {
         >
           <div />
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%" }}>
-            {/* The base starting stack anchor box */}
             <div id="deck-anchor" style={{ position: "relative", width: 420, height: 340, pointerEvents: "auto" }}>
               {PROJECT_CARDS.map((card, i) => {
                 const startRotations = [-7, -2, 3, 8];
@@ -114,8 +160,8 @@ export default function App() {
                     ref={(el) => (cardRefs.current[i] = el)}
                     style={{
                       position: "absolute",
-                      width: 540,  // MATCHES REFERENCE SCREENSHOT WIDTH
-                      height: 400, // MATCHES REFERENCE SCREENSHOT ASPECT RATIO
+                      width: 540,  
+                      height: 400, 
                       borderRadius: 24,
                       background: card.color,
                       border: "1px solid rgba(255,255,255,0.08)",
@@ -126,21 +172,17 @@ export default function App() {
                       justifyContent: "space-between",
                       padding: 24,
                       zIndex: 4 - i,
-                      // Centers larger card perfectly over initial stack baseline matrix boundaries
                       left: "50%",
                       top: "50%",
-                      marginHorizontal: "auto",
                       transform: `translate(-50%, -50%) rotate(${startRotations[i]}deg) translate(${startOffsets[i].x}px, ${startOffsets[i].y}px)`,
                     }}
                   >
-                    {/* Background glow matrix styling overlay */}
                     <div style={{
                       position: "absolute", inset: 0,
                       background: `radial-gradient(circle at 70% 25%, ${card.accent}24 0%, transparent 60%)`,
                       pointerEvents: "none",
                     }} />
 
-                    {/* Top Row: Austin-Style Minimal Dark Pill Tag */}
                     <div style={{
                       display: "inline-flex", background: "rgba(0,0,0,0.5)",
                       borderRadius: 999, padding: "6px 14px",
@@ -151,7 +193,6 @@ export default function App() {
                       </span>
                     </div>
 
-                    {/* Bottom Row: Separated Title Elements Layout Line */}
                     <div style={{
                       display: "flex",
                       justifyContent: "space-between",
@@ -174,7 +215,15 @@ export default function App() {
         </div>
       </div>
 
-      <div style={{ height: "100vh", background: "#eeeeee" }} />
+      {/* SECTION 3: EXPERIENCE (Horizontal Timelines Flow) */}
+      <div ref={experienceRef} style={{ background: "#090d16", width: "100%" }}>
+        <Experience />
+      </div>
+
+      {/* SECTION 4: SKILLS (Staggered Pop Grid) */}
+      <div ref={skillsRef} style={{ background: "#eeeeee", width: "100%" }}>
+        <Skills />
+      </div>
     </>
   );
 }
