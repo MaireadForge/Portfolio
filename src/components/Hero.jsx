@@ -65,7 +65,7 @@ export default function Hero() {
                   whiteSpace: "nowrap",
                 }}
               >
-                Anshita Sharma<br />
+                Anshita Shrivastava<br />
                 <span style={{ color: `rgba(80,80,80,${s.opacity * 1.5})` }}>Portfolio</span>
               </div>
             ))}
@@ -78,7 +78,7 @@ export default function Hero() {
               letterSpacing: "-3px",
               color: "#0f172a",
             }}>
-              Anshita Sharma<br />
+              Anshita Shrivastava<br />
               <span style={{ color: "#475569" }}>Portfolio</span>
             </div>
           </div>

@@ -7,6 +7,7 @@ import Hero from "./components/Hero";
 import Projects from "./components/Projects";
 import Experience from "./components/Experience"; // Added Import
 import Skills from "./components/Skills";         // Added Import
+import Achievements from "./components/Achievements";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -223,6 +224,10 @@ export default function App() {
       {/* SECTION 4: SKILLS (Staggered Pop Grid) */}
       <div ref={skillsRef} style={{ background: "#eeeeee", width: "100%" }}>
         <Skills />
+      </div>
+      {/* ACHIEVEMENTS CONTAINER */}
+      <div>
+        <Achievements />
       </div>
     </>
   );
