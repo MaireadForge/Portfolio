@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-// CLEANED UP: Removed Cursor import completely
 import useLenis from "./hooks/useLenis";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -17,7 +16,7 @@ const PROJECT_CARDS = [
 ];
 
 export default function App() {
-  useLenis();
+  useLenis(); 
 
   const containerRef = useRef(null);
   const cardRefs = useRef([]);
@@ -29,14 +28,13 @@ export default function App() {
 
     if (!cards.length || !slots[0] || !deckAnchor || !containerRef.current) return;
 
-    // Build the scrubbing timeline linked to the scroll position
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "top top",
-        end: "+=150%", // Gives the user comfortable scrolling room to watch them split up
+        start: "top top", 
+        end: "+=140%", 
         pin: true,
-        scrub: 1,
+        scrub: 1, 
         invalidateOnRefresh: true,
       },
     });
@@ -58,13 +56,11 @@ export default function App() {
             const slotRect = slot.getBoundingClientRect();
             return `+=${slotRect.top - cardRect.top}`;
           },
-          scaleX: () => slot.getBoundingClientRect().width / 300, // Normalized base width
-          scaleY: () => slot.getBoundingClientRect().height / 370, // Normalized base height
           rotation: 0,
           transformOrigin: "center center",
           ease: "power1.inOut",
         },
-        i * 0.05 // Sleek sequential fly-out stagger
+        i * 0.03
       );
     });
 
@@ -76,24 +72,21 @@ export default function App() {
 
   return (
     <>
-      {/* CLEANED UP: Cursor tag is completely gone now */}
       <Navbar />
       
-      {/* Pinned Scroll Container */}
-      <div ref={containerRef} style={{ position: "relative", width: "100%" }}>
+      <div ref={containerRef} style={{ position: "relative", width: "100%", overflow: "hidden" }}>
         <Hero />
         <Projects />
 
         {/* FLOATING MASTER CARDS LAYER */}
-        {/* This sits absolutely on top, positioning the deck anchor context right in the Hero column */}
         <div 
           style={{
             position: "absolute",
             top: 0,
             left: 0,
             width: "100%",
-            height: "100vh",
-            pointerEvents: "none", // Allows clicking through to buttons underneath
+            height: "100vh", 
+            pointerEvents: "none",
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
             alignItems: "center",
@@ -102,19 +95,17 @@ export default function App() {
             zIndex: 5,
           }}
         >
-          {/* Left space filler to match layout columns */}
           <div />
-
-          {/* Right deck zone where the cards start stacked */}
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%" }}>
-            <div id="deck-anchor" style={{ position: "relative", width: 320, height: 400, pointerEvents: "auto" }}>
+            {/* The base starting stack anchor box */}
+            <div id="deck-anchor" style={{ position: "relative", width: 420, height: 340, pointerEvents: "auto" }}>
               {PROJECT_CARDS.map((card, i) => {
-                const startRotations = [-9, -3, 4, 10];
+                const startRotations = [-7, -2, 3, 8];
                 const startOffsets = [
-                  { x: -20, y: 16 },
-                  { x: -6, y: 6 },
-                  { x: 8, y: -4 },
-                  { x: 22, y: -12 },
+                  { x: -25, y: 12 },
+                  { x: -8, y: 4 },
+                  { x: 10, y: -6 },
+                  { x: 26, y: -14 },
                 ];
 
                 return (
@@ -123,44 +114,56 @@ export default function App() {
                     ref={(el) => (cardRefs.current[i] = el)}
                     style={{
                       position: "absolute",
-                      width: 300,
-                      height: 370,
-                      borderRadius: 18,
+                      width: 540,  // MATCHES REFERENCE SCREENSHOT WIDTH
+                      height: 400, // MATCHES REFERENCE SCREENSHOT ASPECT RATIO
+                      borderRadius: 24,
                       background: card.color,
                       border: "1px solid rgba(255,255,255,0.08)",
-                      boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
+                      boxShadow: "0 30px 70px rgba(0,0,0,0.35)",
                       overflow: "hidden",
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "space-between",
-                      padding: 22,
+                      padding: 24,
                       zIndex: 4 - i,
-                      transform: `rotate(${startRotations[i]}deg) translate(${startOffsets[i].x}px, ${startOffsets[i].y}px)`,
+                      // Centers larger card perfectly over initial stack baseline matrix boundaries
+                      left: "50%",
+                      top: "50%",
+                      marginHorizontal: "auto",
+                      transform: `translate(-50%, -50%) rotate(${startRotations[i]}deg) translate(${startOffsets[i].x}px, ${startOffsets[i].y}px)`,
                     }}
                   >
-                    {/* Background Glow */}
+                    {/* Background glow matrix styling overlay */}
                     <div style={{
                       position: "absolute", inset: 0,
-                      background: `radial-gradient(circle at 70% 25%, ${card.accent}28 0%, transparent 65%)`,
+                      background: `radial-gradient(circle at 70% 25%, ${card.accent}24 0%, transparent 60%)`,
                       pointerEvents: "none",
                     }} />
 
-                    {/* Tag */}
+                    {/* Top Row: Austin-Style Minimal Dark Pill Tag */}
                     <div style={{
-                      display: "inline-flex", background: "rgba(0,0,0,0.4)",
-                      backdropFilter: "blur(8px)", borderRadius: 999, padding: "5px 14px",
-                      width: "fit-content", border: "1px solid rgba(255,255,255,0.08)",
+                      display: "inline-flex", background: "rgba(0,0,0,0.5)",
+                      borderRadius: 999, padding: "6px 14px",
+                      width: "fit-content", border: "1px solid rgba(255,255,255,0.06)",
                     }}>
-                      <span style={{ fontSize: 11, color: "rgba(255,255,255,0.7)", fontFamily: "'DM Sans', sans-serif" }}>
+                      <span style={{ fontSize: 11, fontWeight: 500, color: "rgba(255,255,255,0.6)", fontFamily: "'DM Sans', sans-serif", letterSpacing: "0.2px" }}>
                         {card.tag}
                       </span>
                     </div>
 
-                    {/* Title */}
-                    <div style={{ fontSize: 24, fontWeight: 800, color: "#fff", fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.5px" }}>
-                      {card.title}
-                      <div style={{ fontSize: 11, fontWeight: 300, color: "rgba(255,255,255,0.4)", marginTop: 4 }}>
-                        ↗ View Case Study
+                    {/* Bottom Row: Separated Title Elements Layout Line */}
+                    <div style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "flex-end",
+                      width: "100%",
+                      zIndex: 2
+                    }}>
+                      <div style={{ fontSize: 28, fontWeight: 700, color: "#fff", fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.5px" }}>
+                        {card.title}
+                      </div>
+                      <div style={{ fontSize: 12, fontWeight: 400, color: "rgba(255,255,255,0.5)", fontFamily: "'DM Sans', sans-serif" }}>
+                        View Case Study ↗
                       </div>
                     </div>
                   </div>
@@ -171,7 +174,6 @@ export default function App() {
         </div>
       </div>
 
-      {/* Spacer zone so the site can keep scrolling past the animation hook */}
       <div style={{ height: "100vh", background: "#eeeeee" }} />
     </>
   );

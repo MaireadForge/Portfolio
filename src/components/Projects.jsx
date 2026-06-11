@@ -4,14 +4,16 @@ export default function Projects() {
       id="projects"
       style={{
         background: "#eeeeee",
-        height: "100vh",
+        minHeight: "100vh",
         position: "relative",
-        padding: "80px 60px 40px",
+        padding: "80px 40px", 
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
+        alignItems: "center", 
       }}
     >
+      {/* Dynamic Header Block Aligning with Wide Frame Boundaries */}
       <div
         style={{
           display: "flex",
@@ -19,23 +21,24 @@ export default function Projects() {
           alignItems: "flex-end",
           marginBottom: 40,
           width: "100%",
-          maxWidth: "1200px",
-          margin: "0 auto 40px",
+          maxWidth: "1120px", // Expanded to precisely frame wide grid dimensions
+          paddingHorizontal: 10,
         }}
       >
         <div>
           <div style={{
-            fontSize: 10, color: "#aaa",
-            letterSpacing: "3px", textTransform: "uppercase",
-            fontFamily: "'DM Sans', sans-serif", marginBottom: 10,
+            fontSize: 11, color: "#888",
+            letterSpacing: "2px", textTransform: "uppercase",
+            fontFamily: "'DM Sans', sans-serif", marginBottom: 6,
+            fontWeight: 600,
           }}>
             Selected Work
           </div>
           <h2 style={{
             fontFamily: "'DM Sans', sans-serif",
-            fontSize: "clamp(40px, 5vw, 64px)",
+            fontSize: "clamp(32px, 3.5vw, 44px)",
             fontWeight: 800, color: "#0f172a",
-            letterSpacing: "-2px", lineHeight: 1,
+            letterSpacing: "-1px", lineHeight: 1,
           }}>
             Latest Projects
           </h2>
@@ -43,23 +46,24 @@ export default function Projects() {
         <a href="#" style={{
           fontFamily: "'DM Sans', sans-serif",
           fontSize: 13, color: "#555",
-          textDecoration: "none", borderBottom: "1px solid #aaa",
-          paddingBottom: 2,
+          textDecoration: "none", borderBottom: "1px solid #ccc",
+          paddingBottom: 4,
+          fontWeight: 500,
         }}>
           View All →
         </a>
       </div>
 
-      {/* Dynamic Grid Coordinates */}
+      {/* Broad Target Grid Positions Layout */}
       <div
         id="projects-grid"
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 30,
+          gridTemplateColumns: "540px 540px", // Exact wide card specifications
+          justifyContent: "center", 
+          gap: "40px 40px", // Matches standard layout gutters
           width: "100%",
-          maxWidth: "1200px",
-          margin: "0 auto",
+          maxWidth: "1120px",
         }}
       >
         {[0, 1, 2, 3].map((i) => (
@@ -67,9 +71,9 @@ export default function Projects() {
             key={i}
             id={`grid-slot-${i}`}
             style={{
-              aspectRatio: "16/10",
-              borderRadius: 18,
-              background: "transparent", // Completely invisible box anchors
+              width: 540, 
+              height: 400,
+              background: "transparent",
               position: "relative",
             }}
           />
