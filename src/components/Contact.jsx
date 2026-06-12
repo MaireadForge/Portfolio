@@ -5,85 +5,184 @@ export default function Contact() {
     <section
       id="contact"
       style={{
-        minHeight: "85vh",
+        minHeight: "100vh",
         width: "100%",
         background: "#eeeeee",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        padding: "100px 60px",
-        boxSizing: "border-box",
-        borderTop: "1px solid #e2e8f0"
+        padding: "80px 24px",
+        boxSizing: "border-box"
       }}
     >
-      <div style={{ maxWidth: "1120px", width: "100%", display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: "80px", alignItems: "start" }}>
-        
-        {/* LEFT COLUMN: CALL TO ACTION HEADINGS */}
-        <div>
-          <h2 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(40px, 5vw, 60px)", fontWeight: 800, color: "#0f172a", lineHeight: 1.1, letterSpacing: "-2px", margin: 0 }}>
-            Let's build<br />something <span style={{ color: "#94a3b8" }}>together</span>
-          </h2>
-          
-          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "15px", color: "#64748b", lineHeight: 1.6, marginTop: "24px", maxWidth: "420px" }}>
-            Open for software engineering internships, technical collaborations, and core systems architecture opportunities.
-          </p>
+      {/* CENTRALIZED LARGE CARD */}
+      <div
+        style={{
+          maxWidth: "840px",
+          width: "100%",
+          background: "#ffffff",
+          borderRadius: "32px",
+          padding: "56px 40px",
+          boxSizing: "border-box",
+          boxShadow: "0 20px 50px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.01)",
+          border: "1px solid rgba(0, 0, 0, 0.03)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          textAlign: "center"
+        }}
+      >
+        {/* AVATAR BADGE / INITIALS PLACEHOLDER */}
+        <div
+          style={{
+            width: "64px",
+            height: "64px",
+            borderRadius: "16px",
+            background: "#f1f5f9",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            fontSize: "24px",
+            fontWeight: 800,
+            color: "#0f172a",
+            fontFamily: "'DM Sans', sans-serif",
+            marginBottom: "16px",
+            border: "1px solid rgba(0, 0, 0, 0.02)"
+          }}
+        >
+          A
+        </div>
 
-          <div style={{ marginTop: "50px", display: "flex", flexDirection: "column", gap: "16px" }}>
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <span style={{ fontSize: "11px", color: "#94a3b8", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", marginBottom: "4px" }}>Email Reference</span>
-              <a href="mailto:anshita@example.com" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "18px", fontWeight: 700, color: "#0f172a", textDecoration: "none" }}>anshita@example.com</a>
-            </div>
-            
-            <div style={{ display: "flex", flexDirection: "column", marginTop: "12px" }}>
-              <span style={{ fontSize: "11px", color: "#94a3b8", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", marginBottom: "4px" }}>Location Location</span>
-              <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "16px", fontWeight: 600, color: "#475569" }}>Indore, Madhya Pradesh, India</span>
-            </div>
+        {/* PROFILE SUB-TEXT */}
+        <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "16px", fontWeight: 700, color: "#0f172a", margin: 0 }}>
+          Anshita
+        </div>
+        <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "13px", fontWeight: 500, color: "#64748b", marginTop: "2px", marginBottom: "32px" }}>
+          Full-Stack Engineer
+        </div>
+
+        {/* MAIN CALL TO ACTION HEADER */}
+        <h2 style={{ 
+          fontFamily: "'DM Sans', sans-serif", 
+          fontSize: "clamp(32px, 4.5vw, 48px)", 
+          fontWeight: 800, 
+          color: "#0f172a", 
+          lineHeight: 1.2, 
+          letterSpacing: "-1.5px", 
+          margin: "0 auto",
+          maxWidth: "600px"
+        }}>
+          Let's build something <span style={{ color: "#94a3b8" }}>together</span>
+        </h2>
+        
+        {/* CARD DESCRIPTION */}
+        <p style={{ 
+          fontFamily: "'Inter', sans-serif", 
+          fontSize: "15px", 
+          color: "#64748b", 
+          lineHeight: 1.6, 
+          marginTop: "16px", 
+          marginBottom: "40px",
+          maxWidth: "520px" 
+        }}>
+          Open for software engineering internships, technical collaborations, and core systems architecture opportunities.
+        </p>
+
+        {/* METADATA ROW (EMAIL & LOCATION) */}
+        <div style={{ 
+          display: "flex", 
+          gap: "48px", 
+          justifyContent: "center", 
+          alignItems: "center",
+          flexWrap: "wrap",
+          marginBottom: "48px",
+          padding: "0 20px"
+        }}>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <span style={{ fontSize: "10px", color: "#94a3b8", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", marginBottom: "4px" }}>Email Reference</span>
+            <a href="mailto:anshita@example.com" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "15px", fontWeight: 700, color: "#0f172a", textDecoration: "none" }}>
+              anshita@example.com
+            </a>
+          </div>
+          
+          {/* DIVIDER LINE */}
+          <div style={{ width: "1px", height: "24px", background: "#e2e8f0", display: "none", sm: "block" }} />
+
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <span style={{ fontSize: "10px", color: "#94a3b8", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", marginBottom: "4px" }}>Location</span>
+            <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "15px", fontWeight: 600, color: "#475569" }}>
+              Indore, Madhya Pradesh, India
+            </span>
           </div>
         </div>
 
-        {/* RIGHT COLUMN: REFINED LINK INTERFACE */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "16px", width: "100%" }}>
-          <span style={{ fontSize: "11px", color: "#64748b", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", marginBottom: "8px" }}>Network Channels</span>
+        {/* INTERACTIVE BUTTONS FOOTER CONTAINER */}
+        <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
           
+          {/* PRIMARY BLACK BUTTON */}
+          <a
+            href="mailto:anshita@example.com"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "10px",
+              background: "#0f172a",
+              color: "#ffffff",
+              padding: "14px 28px",
+              borderRadius: "99px",
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "14px",
+              fontWeight: 700,
+              textDecoration: "none",
+              boxShadow: "0 10px 25px rgba(15, 23, 42, 0.25)",
+              transition: "transform 0.2s ease"
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-2px)"}
+            onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0)"}
+          >
+            <span>✉</span> Email me
+          </a>
+
+          {/* SECONDARY OUTLINE BUTTONS */}
           {[
-            { platform: "LinkedIn", link: "https://linkedin.com/in/", icon: "🔗" },
-            { platform: "GitHub Handle", link: "https://github.com/", icon: "💻" },
-            { platform: "LeetCode Profile", link: "https://leetcode.com/", icon: "🏆" }
-          ].map((item, idx) => (
+            { label: "LinkedIn", url: "https://linkedin.com/in/", icon: "🔗" },
+            { label: "GitHub", url: "https://github.com/", icon: "💻" }
+          ].map((btn, idx) => (
             <a
               key={idx}
-              href={item.link}
+              href={btn.url}
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                display: "flex",
+                display: "inline-flex",
                 alignItems: "center",
-                justifyContent: "space-between",
+                gap: "10px",
                 background: "#ffffff",
-                padding: "22px 28px",
-                borderRadius: "20px",
+                color: "#0f172a",
+                padding: "14px 28px",
+                borderRadius: "99px",
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: "14px",
+                fontWeight: 700,
                 textDecoration: "none",
-                boxShadow: "0 10px 25px rgba(0,0,0,0.03)",
-                transition: "transform 0.3s ease, box-shadow 0.3s ease"
+                border: "1px solid #e2e8f0",
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.02)",
+                transition: "transform 0.2s ease, background 0.2s ease"
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateX(6px)";
-                e.currentTarget.style.boxShadow = "0 15px 30px rgba(0,0,0,0.06)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.background = "#f8fafc";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateX(0px)";
-                e.currentTarget.style.boxShadow = "0 10px 25px rgba(0,0,0,0.03)";
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.background = "#ffffff";
               }}
             >
-              <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-                <span style={{ fontSize: "18px" }}>{item.icon}</span>
-                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "16px", fontWeight: 700, color: "#0f172a" }}>{item.platform}</span>
-              </div>
-              <span style={{ color: "#94a3b8", fontSize: "14px", fontWeight: 700 }}>→</span>
+              <span>{btn.icon}</span> {btn.label}
             </a>
           ))}
-        </div>
 
+        </div>
       </div>
     </section>
   );
