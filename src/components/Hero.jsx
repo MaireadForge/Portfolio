@@ -34,7 +34,7 @@ export default function Hero() {
         >
           <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#22c55e" }} />
           <span style={{ fontSize: 12, color: "#333", fontFamily: "'DM Sans', sans-serif" }}>
-            Gwalior, India
+            Gwalior, Madhya Pradesh, India
           </span>
         </motion.div>
 
