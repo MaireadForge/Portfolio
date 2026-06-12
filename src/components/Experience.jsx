@@ -7,14 +7,14 @@ const TIMELINE_DATA = [
 
 export default function Experience() {
   return (
-    <div style={{ height: "100vh", width: "100%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 60px", overflow: "hidden" }}>
+    <div style={{ height: "100vh", width: "100%", background: "#0f172a", display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 60px", overflow: "hidden" }}>
       
       {/* Header section */}
       <div style={{ maxWidth: "1120px", width: "100%", margin: "0 auto 40px" }}>
-        <div style={{ fontSize: 11, color: "#475569", letterSpacing: "2px", textTransform: "uppercase", fontFamily: "'DM Sans', sans-serif", fontWeight: 600, marginBottom: 6 }}>
+        <div style={{ fontSize: 11, color: "#94a3b8", letterSpacing: "2px", textTransform: "uppercase", fontFamily: "'DM Sans', sans-serif", fontWeight: 700, marginBottom: 6 }}>
           Journey
         </div>
-        <h2 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(32px, 3.5vw, 44px)", fontWeight: 800, color: "#fff", letterSpacing: "-1px" }}>
+        <h2 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(32px, 3.5vw, 44px)", fontWeight: 800, color: "#ffffff", letterSpacing: "-1px" }}>
           Experience Timeline
         </h2>
       </div>
@@ -27,30 +27,31 @@ export default function Experience() {
             style={{ 
               width: "420px", 
               height: "280px", 
-              background: "#0f172a", 
+              background: "#eeeeee", /* The light gray theme color for cards */
               borderRadius: 24, 
-              border: "1px solid rgba(255,255,255,0.05)", 
+              border: "1px solid rgba(0,0,0,0.03)", 
               padding: 32, 
               position: "relative",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
               flexShrink: 0,
-              boxShadow: "0 20px 50px rgba(0,0,0,0.2)"
+              boxShadow: "0 20px 40px rgba(0,0,0,0.25)"
             }}
           >
+            {/* Subtle light brand glow blending onto the gray cards */}
             <div style={{ position: "absolute", inset: 0, background: `radial-gradient(circle at 10% 10%, ${item.glow}15 0%, transparent 60%)`, pointerEvents: "none", borderRadius: 24 }} />
             
             <div>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-                <span style={{ fontSize: 13, color: item.glow, fontFamily: "'DM Sans', sans-serif", fontWeight: 600 }}>{item.year}</span>
-                <span style={{ fontSize: 12, color: "rgba(255,255,255,0.3)", fontFamily: "'DM Sans', sans-serif" }}>0{idx + 1}</span>
+                <span style={{ fontSize: 13, color: item.glow, fontFamily: "'DM Sans', sans-serif", fontWeight: 700 }}>{item.year}</span>
+                <span style={{ fontSize: 12, color: "#64748b", fontFamily: "'DM Sans', sans-serif", fontWeight: 600 }}>0{idx + 1}</span>
               </div>
-              <h3 style={{ fontSize: 22, fontWeight: 700, color: "#fff", fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.5px", marginBottom: 4 }}>{item.role}</h3>
-              <div style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", fontFamily: "'DM Sans', sans-serif", fontWeight: 500 }}>{item.company}</div>
+              <h3 style={{ fontSize: 22, fontWeight: 700, color: "#0f172a", fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.5px", marginBottom: 4 }}>{item.role}</h3>
+              <div style={{ fontSize: 14, color: "#475569", fontFamily: "'DM Sans', sans-serif", fontWeight: 600 }}>{item.company}</div>
             </div>
 
-            <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)", fontFamily: "'DM Sans', sans-serif", lineHeight: 1.6, margin: 0 }}>
+            <p style={{ fontSize: 14, color: "#334155", fontFamily: "'Inter', sans-serif", lineHeight: 1.6, margin: 0 }}>
               {item.description}
             </p>
           </div>

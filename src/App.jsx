@@ -5,9 +5,10 @@ import useLenis from "./hooks/useLenis";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
-import Experience from "./components/Experience"; // Added Import
-import Skills from "./components/Skills";         // Added Import
+import Experience from "./components/Experience";
+import Skills from "./components/Skills";
 import Achievements from "./components/Achievements";
+import Contact from "./components/Contact"; // Make sure to import your new Contact component
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,8 +23,8 @@ export default function App() {
   useLenis(); 
 
   const containerRef = useRef(null);
-  const experienceRef = useRef(null); // Ref for Experience Section
-  const skillsRef = useRef(null);     // Ref for Skills Section
+  const experienceRef = useRef(null);
+  const skillsRef = useRef(null);
   const cardRefs = useRef([]);
 
   useEffect(() => {
@@ -33,7 +34,7 @@ export default function App() {
 
     if (!cards.length || !slots[0] || !deckAnchor || !containerRef.current) return;
 
-    // 1. YOUR PERFECT PROJECTS PINNED TIMELINE
+    // 1. PROJECTS PINNED TIMELINE
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
@@ -70,10 +71,10 @@ export default function App() {
       );
     });
 
-    // 2. UNIQUE ANIMATION FOR EXPERIENCE: Horizontal Scroll Track Panel
+    // 2. EXPERIENCE: Horizontal Scroll Track Panel
     const expTrack = document.getElementById("experience-track");
     if (expTrack && experienceRef.current) {
-      const totalScrollWidth = expTrack.scrollWidth - window.innerWidth + 120; // 120px to account for paddings
+      const totalScrollWidth = expTrack.scrollWidth - window.innerWidth + 120;
       
       gsap.to(expTrack, {
         x: -totalScrollWidth,
@@ -89,7 +90,7 @@ export default function App() {
       });
     }
 
-    // 3. UNIQUE ANIMATION FOR SKILLS: 3D Pop & Stagger Rise up
+    // 3. SKILLS: 3D Pop & Stagger Rise up
     const skillPills = document.querySelectorAll(".skill-pill");
     if (skillPills.length && skillsRef.current) {
       gsap.fromTo(
@@ -112,6 +113,9 @@ export default function App() {
       );
     }
 
+    // Refresh ScrollTrigger layouts to register exact pinned offsets for anchors
+    ScrollTrigger.refresh();
+
     return () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
@@ -121,8 +125,8 @@ export default function App() {
     <>
       <Navbar />
       
-      {/* PERFECT HERO + PROJECTS WRAPPER (Stays 100% Unchanged) */}
-      <div ref={containerRef} style={{ position: "relative", width: "100%", overflow: "hidden" }}>
+      {/* SECTION 1: HERO & PROJECTS DISPLAY */}
+      <section id="projects" ref={containerRef} style={{ position: "relative", width: "100%", overflow: "hidden" }}>
         <Hero />
         <Projects />
 
@@ -214,21 +218,27 @@ export default function App() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* SECTION 3: EXPERIENCE (Horizontal Timelines Flow) */}
-      <div ref={experienceRef} style={{ background: "#090d16", width: "100%" }}>
+      {/* SECTION 2: EXPERIENCE */}
+      <section id="experience" ref={experienceRef} style={{ background: "#0f172a", width: "100%" }}>
         <Experience />
-      </div>
+      </section>
 
-      {/* SECTION 4: SKILLS (Staggered Pop Grid) */}
-      <div ref={skillsRef} style={{ background: "#eeeeee", width: "100%" }}>
+      {/* SECTION 3: TECH STACK */}
+      <section id="skills" ref={skillsRef} style={{ background: "#eeeeee", width: "100%" }}>
         <Skills />
-      </div>
-      {/* ACHIEVEMENTS CONTAINER */}
-      <div>
+      </section>
+
+      {/* SECTION 4: ACHIEVEMENTS */}
+      <section id="achievements" style={{ background: "#eeeeee", width: "100%" }}>
         <Achievements />
-      </div>
+      </section>
+
+      {/* SECTION 5: CONTACT */}
+      <section id="contact" style={{ background: "#eeeeee", width: "100%" }}>
+        <Contact />
+      </section>
     </>
   );
 }
