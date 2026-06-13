@@ -8,15 +8,59 @@ import Projects from "./components/Projects";
 import Experience from "./components/Experience";
 import Skills from "./components/Skills";
 import Achievements from "./components/Achievements";
-import Contact from "./components/Contact"; // Make sure to import your new Contact component
+import Contact from "./components/Contact"; 
 
 gsap.registerPlugin(ScrollTrigger);
 
 const PROJECT_CARDS = [
-  { id: 1, tag: "Real-time Web App", title: "CodeCollab", color: "#0f172a", accent: "#3b82f6" },
-  { id: 2, tag: "AI / ML Platform", title: "NarrativeX", color: "#0c1a12", accent: "#22c55e" },
-  { id: 3, tag: "Computer Vision", title: "ShopLens", color: "#1a0f2e", accent: "#a855f7" },
-  { id: 4, tag: "Internship Project", title: "CoGrow", color: "#1f0f05", accent: "#f97316" },
+  { 
+    id: 1, 
+    //tag: "Real-time Web App", 
+    title: "CodeCollab", 
+    color: "#0f172a", 
+    accent: "#f97316",
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
+    description: "A full-stack real-time collaborative coding platform where multiple users can join rooms, write code together simultaneously, explore GitHub repositories, get AI-powered code analysis, chat, and see each other's cursors live",
+    tags: ["Next.js", "TypeScript", "LangChain"],
+    githubUrl: "https://github.com/MaireadForge/Code-Collab",
+    liveUrl: "https://code-collab-swart-sigma.vercel.app/"
+  },
+  { 
+    id: 2, 
+   // tag: "AI / ML Platform", 
+    title: "NarrativeX", 
+    color: "#0f172a", 
+    accent: "#f97316",
+    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80",
+    description: "NarrativeX is an AI-powered news platform that aggregates real-time headlines, generates intelligent summaries, and lets you have conversations with your news using natural language.",
+    tags: ["MERN Stack", "Docker", "Redis"],
+    githubUrl: "https://github.com/MaireadForge/NarrativeX",
+    liveUrl: "https://narrative-x-six.vercel.app/"
+  },
+  { 
+    id: 3, 
+   // tag: "Computer Vision", 
+    title: "ShopLens", 
+    color: "#0f172a", 
+    accent: "#f97316",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
+    description: "ShopLens helps users find visually similar products on Walmart by simply uploading or clicking a picture of an item they don’t know the name of or want to shop an exactly similar item.",
+    tags: ["React", "TensorFlow", "WebSockets"],
+    githubUrl: "https://github.com/MaireadForge/ShopLensss",
+    //liveUrl: "https://your-live-demo.com"
+  },
+  { 
+    id: 4, 
+   // tag: "Internship Project", 
+    title: "HelpDesk", 
+    color: "#0f172a", 
+    accent: "#f97316",
+    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80",
+    description: "A full-stack Customer Support Ticketing System built using the MERN Stack with real-time chat, file uploads, role-based dashboards, and basic analytics — simulating a real-world helpdesk experience.",
+    tags: ["Solidity", "Next.js", "Ethers.js"],
+    githubUrl: "https://github.com/MaireadForge/HelpDesk---Customer-Support-Ticket--Project",
+    liveUrl: "https://help-desk-customer-support-ticket-p.vercel.app/"
+  },
 ];
 
 export default function App() {
@@ -34,7 +78,6 @@ export default function App() {
 
     if (!cards.length || !slots[0] || !deckAnchor || !containerRef.current) return;
 
-    // 1. PROJECTS PINNED TIMELINE
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
@@ -71,7 +114,6 @@ export default function App() {
       );
     });
 
-    // 2. EXPERIENCE: Horizontal Scroll Track Panel
     const expTrack = document.getElementById("experience-track");
     if (expTrack && experienceRef.current) {
       const totalScrollWidth = expTrack.scrollWidth - window.innerWidth + 120;
@@ -90,7 +132,6 @@ export default function App() {
       });
     }
 
-    // 3. SKILLS: 3D Pop & Stagger Rise up
     const skillPills = document.querySelectorAll(".skill-pill");
     if (skillPills.length && skillsRef.current) {
       gsap.fromTo(
@@ -113,7 +154,6 @@ export default function App() {
       );
     }
 
-    // Refresh ScrollTrigger layouts to register exact pinned offsets for anchors
     ScrollTrigger.refresh();
 
     return () => {
@@ -125,7 +165,6 @@ export default function App() {
     <>
       <Navbar />
       
-      {/* SECTION 1: HERO & PROJECTS DISPLAY */}
       <section id="projects" ref={containerRef} style={{ position: "relative", width: "100%", overflow: "hidden" }}>
         <Hero />
         <Projects />
@@ -138,7 +177,7 @@ export default function App() {
             left: 0,
             width: "100%",
             height: "100vh", 
-            pointerEvents: "none",
+            pointerEvents: "none", // Allows scrolling through the wrapper layer
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
             alignItems: "center",
@@ -165,7 +204,7 @@ export default function App() {
                     ref={(el) => (cardRefs.current[i] = el)}
                     style={{
                       position: "absolute",
-                      width: 540,  
+                      width: 450,  
                       height: 400, 
                       borderRadius: 24,
                       background: card.color,
@@ -174,12 +213,13 @@ export default function App() {
                       overflow: "hidden",
                       display: "flex",
                       flexDirection: "column",
-                      justifyContent: "space-between",
                       padding: 24,
+                      boxSizing: "border-box",
                       zIndex: 4 - i,
                       left: "50%",
                       top: "50%",
                       transform: `translate(-50%, -50%) rotate(${startRotations[i]}deg) translate(${startOffsets[i].x}px, ${startOffsets[i].y}px)`,
+                      pointerEvents: "auto", // FIX: Re-enables pointer events exclusively for the card contents
                     }}
                   >
                     <div style={{
@@ -188,16 +228,49 @@ export default function App() {
                       pointerEvents: "none",
                     }} />
 
+                    {/* PHOTO BANNER FRAME */}
                     <div style={{
-                      display: "inline-flex", background: "rgba(0,0,0,0.5)",
-                      borderRadius: 999, padding: "6px 14px",
-                      width: "fit-content", border: "1px solid rgba(255,255,255,0.06)",
+                      width: "100%",
+                      height: "140px",
+                      borderRadius: "14px",
+                      overflow: "hidden",
+                      background: "rgba(255,255,255,0.05)",
+                      marginBottom: "12px",
+                      position: "relative",
+                      zIndex: 2
                     }}>
-                      <span style={{ fontSize: 11, fontWeight: 500, color: "rgba(255,255,255,0.6)", fontFamily: "'DM Sans', sans-serif", letterSpacing: "0.2px" }}>
-                        {card.tag}
-                      </span>
+                      <img 
+                        src={card.image} 
+                        alt={card.title} 
+                        style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.85 }}
+                      />
+                      
+                      <div style={{
+                        position: "absolute", top: 12, left: 12,
+                        background: "rgba(0,0,0,0.75)",
+                        borderRadius: 999, padding: "6px 14px",
+                        border: "1px solid rgba(255,255,255,0.06)",
+                      }}>
+                        <span style={{ fontSize: 11, fontWeight: 500, color: "rgba(255,255,255,0.6)", fontFamily: "'DM Sans', sans-serif", letterSpacing: "0.2px" }}>
+                          {card.tag}
+                        </span>
+                      </div>
                     </div>
 
+                    {/* MAIN EXPLANATORY BODY TEXT */}
+                    <p style={{
+                      fontFamily: "'Inter', sans-serif",
+                      fontSize: "16px",
+                      color: "rgba(255,255,255,0.65)",
+                      lineHeight: 1.5,
+                      margin: "0 0 12px 0",
+                      flexGrow: 1,
+                      zIndex: 2
+                    }}>
+                      {card.description}
+                    </p>
+
+                    {/* FOOTER BAR */}
                     <div style={{
                       display: "flex",
                       justifyContent: "space-between",
@@ -208,10 +281,12 @@ export default function App() {
                       <div style={{ fontSize: 28, fontWeight: 700, color: "#fff", fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.5px" }}>
                         {card.title}
                       </div>
-                      <div style={{ fontSize: 12, fontWeight: 400, color: "rgba(255,255,255,0.5)", fontFamily: "'DM Sans', sans-serif" }}>
-                        View Case Study ↗
+                      <div style={{ fontSize: 12, fontWeight: 500, fontFamily: "'DM Sans', sans-serif", display: "flex", gap: "14px" }}>
+                        <a href={card.githubUrl} target="_blank" rel="noopener noreferrer" style={{ color: "rgba(255,255,255,0.7)", textDecoration: "none" }}>Code 🛠️</a>
+                        <a href={card.liveUrl} target="_blank" rel="noopener noreferrer" style={{ color: card.accent, textDecoration: "none" }}>Live Demo ↗</a>
                       </div>
                     </div>
+
                   </div>
                 );
               })}
@@ -220,22 +295,18 @@ export default function App() {
         </div>
       </section>
 
-      {/* SECTION 2: EXPERIENCE */}
       <section id="experience" ref={experienceRef} style={{ background: "#0f172a", width: "100%" }}>
         <Experience />
       </section>
 
-      {/* SECTION 3: TECH STACK */}
       <section id="skills" ref={skillsRef} style={{ background: "#eeeeee", width: "100%" }}>
         <Skills />
       </section>
 
-      {/* SECTION 4: ACHIEVEMENTS */}
       <section id="achievements" style={{ background: "#eeeeee", width: "100%" }}>
         <Achievements />
       </section>
 
-      {/* SECTION 5: CONTACT */}
       <section id="contact" style={{ background: "#eeeeee", width: "100%" }}>
         <Contact />
       </section>

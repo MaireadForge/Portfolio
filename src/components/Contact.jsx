@@ -88,40 +88,14 @@ export default function Contact() {
           Open for software engineering internships, technical collaborations, and core systems architecture opportunities.
         </p>
 
-        {/* METADATA ROW (EMAIL & LOCATION) */}
-        <div style={{ 
-          display: "flex", 
-          gap: "48px", 
-          justifyContent: "center", 
-          alignItems: "center",
-          flexWrap: "wrap",
-          marginBottom: "48px",
-          padding: "0 20px"
-        }}>
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <span style={{ fontSize: "10px", color: "#94a3b8", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", marginBottom: "4px" }}>Email Reference</span>
-            <a href="mailto:anshita@example.com" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "15px", fontWeight: 700, color: "#0f172a", textDecoration: "none" }}>
-              anshita@example.com
-            </a>
-          </div>
-          
-          {/* DIVIDER LINE */}
-          <div style={{ width: "1px", height: "24px", background: "#e2e8f0", display: "none", sm: "block" }} />
-
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <span style={{ fontSize: "10px", color: "#94a3b8", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", marginBottom: "4px" }}>Location</span>
-            <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "15px", fontWeight: 600, color: "#475569" }}>
-              Indore, Madhya Pradesh, India
-            </span>
-          </div>
-        </div>
+        
 
         {/* INTERACTIVE BUTTONS FOOTER CONTAINER */}
         <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
           
           {/* PRIMARY BLACK BUTTON */}
           <a
-            href="mailto:anshita@example.com"
+            href="mailto:anshitaa.shrivastava2005@gmail.com"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -145,8 +119,8 @@ export default function Contact() {
 
           {/* SECONDARY OUTLINE BUTTONS */}
           {[
-            { label: "LinkedIn", url: "https://linkedin.com/in/", icon: "🔗" },
-            { label: "GitHub", url: "https://github.com/", icon: "💻" }
+            { label: "LinkedIn", url: "https://www.linkedin.com/in/anshita-shrivastava-73a07929a/", icon: "🔗" },
+            { label: "GitHub", url: "https://github.com/MaireadForge", icon: "💻" }
           ].map((btn, idx) => (
             <a
               key={idx}

@@ -55,7 +55,7 @@ export default function Hero() {
                   position: "absolute",
                   top: s.top, left: s.left,
                   fontFamily: "'DM Sans', sans-serif",
-                  fontSize: "clamp(52px, 7.5vw, 100px)",
+                  fontSize: "clamp(40px, 5.5vw, 72px)",
                   fontWeight: 800,
                   lineHeight: 1,
                   letterSpacing: "-3px",
@@ -72,7 +72,7 @@ export default function Hero() {
             <div style={{
               position: "relative",
               fontFamily: "'DM Sans', sans-serif",
-              fontSize: "clamp(52px, 7.5vw, 100px)",
+              fontSize: "clamp(40px, 5.5vw, 72px)",
               fontWeight: 800,
               lineHeight: 1,
               letterSpacing: "-3px",
@@ -84,26 +84,76 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
           style={{
             fontFamily: "'DM Sans', sans-serif",
+            marginTop: 28,
+            maxWidth: 520,
+            cursor: "default",
+          }}
+        >
+          {/* PARAGRAPH 1 */}
+          <p style={{
             fontSize: 15,
             fontWeight: 400,
             color: "#334155",
-            marginTop: 28,
-            maxWidth: 480,
             lineHeight: 1.75,
-            cursor: "text", // Allows clean native text highlight selector on copy
-          }}
-        >
-          <strong>Full-stack developer & open source contributor.</strong> React & Node.js specialist. B.Tech IT student at MITS Gwalior, building real products and growing through every cohort.
-        </motion.p>
+            margin: "0 0 16px 0",
+            cursor: "text"
+          }}>
+            I'm a full-stack developer with a focus on <strong>MERN, Next.js, and TypeScript</strong>. I enjoy building products end-to-end — from database design to UI — and integrating AI where it genuinely adds value.
+          </p>
+
+          {/* PARAGRAPH 2 */}
+          <p style={{
+            fontSize: 15,
+            fontWeight: 400,
+            color: "#334155",
+            lineHeight: 1.75,
+            margin: "0 0 24px 0",
+            cursor: "text"
+          }}>
+            Currently deepening my expertise in AI engineering — leveraging LLMs, RAG pipelines, LangChain, and TensorFlow to build intelligent, real-world solutions. Simultaneously leveling up in DevOps — containerization, cloud infrastructure, and CI/CD — because great products need both smart features and scalable infrastructure.
+          </p>
+
+          {/* METRICS ROW (FORCED TO NEXT LINE) */}
+          <div style={{
+            display: "flex",
+            gap: "10px",
+            flexWrap: "wrap",
+            alignItems: "center"
+          }}>
+            {[
+              { label: "CGPA", value: "9.4" },
+              { label: "Recognition", value: "University Topper" },
+              { label: "GATE 2026", value: "AIR 6375 (CSE)" }
+            ].map((metric, idx) => (
+              <div
+                key={idx}
+                style={{
+                  background: "#ffffff",
+                  border: "1px solid #ddd",
+                  borderRadius: "99px",
+                  padding: "4px 12px",
+                  fontSize: "12px",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "5px",
+                  boxShadow: "0 2px 4px rgba(0,0,0,0.01)"
+                }}
+              >
+                <span style={{ color: "#64748b", fontWeight: 500 }}>{metric.label}:</span>
+                <span style={{ color: "#0f172a", fontWeight: 700 }}>{metric.value}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
 
         <motion.a
-          href="https://github.com/"
+          href="https://github.com/MaireadForge"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.7 }}
@@ -124,11 +174,7 @@ export default function Hero() {
             background: "#334155", border: "2px solid #475569",
             display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20,
           }}>👤</div>
-          <span style={{ color: "#94a3b8", fontSize: 16, margin: "0 8px" }}>+</span>
-          <div style={{
-            width: 28, height: 28, borderRadius: "50%",
-            background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, marginRight: 12,
-          }}>⌨</div>
+          <span style={{ color: "#94a3b8", fontSize: 16, margin: "0 8px" }}></span>
           <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 600, color: "#fff" }}>
             See My Github →
           </span>

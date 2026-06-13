@@ -27,7 +27,7 @@ export default function Projects() {
       >
         <div>
           <div style={{
-            fontSize: 11, color: "#888",
+            fontSize: 15, color: "#888",
             letterSpacing: "2px", textTransform: "uppercase",
             fontFamily: "'DM Sans', sans-serif", marginBottom: 6,
             fontWeight: 600,
@@ -43,13 +43,20 @@ export default function Projects() {
             Latest Projects
           </h2>
         </div>
-        <a href="#" style={{
-          fontFamily: "'DM Sans', sans-serif",
-          fontSize: 13, color: "#555",
-          textDecoration: "none", borderBottom: "1px solid #ccc",
-          paddingBottom: 4,
-          fontWeight: 500,
-        }}>
+        <a 
+          href="https://github.com/MaireadForge" // <-- Replace with your actual GitHub profile link
+          target="_blank" 
+          rel="noopener noreferrer" 
+          style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: 15, 
+            color: "#555",
+            textDecoration: "none", 
+            borderBottom: "1px solid #ccc",
+            paddingBottom: 4,
+            fontWeight: 500,
+          }}
+        >
           View All →
         </a>
       </div>
@@ -71,7 +78,7 @@ export default function Projects() {
             key={i}
             id={`grid-slot-${i}`}
             style={{
-              width: 540, 
+              width: 450, 
               height: 400,
               background: "transparent",
               position: "relative",

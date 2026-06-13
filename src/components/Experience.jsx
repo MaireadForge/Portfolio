@@ -1,8 +1,8 @@
 const TIMELINE_DATA = [
-  { year: "2025 - Present", role: "Full Stack Engineering Intern", company: "CoGrow", description: "Architected real-time dashboard tracking features using React, Node.js, and web sockets. Reduced data fetching latencies by 35%.", glow: "#3b82f6" },
-  { year: "2024", role: "AI Software Contributor", company: "NarrativeX", description: "Implemented transformer-based natural language processing pipelines and engineered vector search embeddings integration patterns.", glow: "#22c55e" },
-  { year: "2023", role: "Computer Vision Lead", company: "ShopLens", description: "Developed custom convolutional neural networks for asset sorting operations deployed across container platforms.", glow: "#a855f7" },
-  { year: "2022", role: "B.Tech IT Undergrad", company: "MITS Gwalior", description: "Started core technical foundations journey. Specialized in algorithm structures, data modeling variants, and systems architectures.", glow: "#f97316" },
+  { year: "May 2026-Present", role: "Software Engineer Intern", company: "Webzian Digital Service Pvt. Ltd.", description: "Developing a Sports Club Management System featuring member onboarding, secure authentication, and event scheduling. Building operational admin dashboards for attendance tracking and player performance analytics.", glow: "#3b82f6" },
+  { year: "Nov 2025-Jan 2026", role: "AI/ML Intern", company: "Infosys Springboard", description: "Developed an NLP Contract Review Assistant using Python, spaCy, LangChain, and LLMs to identify financial risks. Built the interactive frontend in Flutter and backend APIs with FastAPI.", glow: "#22c55e" },
+  { year: "Sep 2025-Nov 2025", role: "Undergraduate Researcher", company: "Madhav Institute Of Technology and Science", description: "Built a Python/TensorFlow CNN audio pipeline with Librosa, achieving 85.12% accuracy on the Watkins Database. Co-authored and submitted a peer-reviewed research manuscript on multi-species acoustic signal classification (2025).", glow: "#a855f7" },
+  { year: "Aug 2025-Sep 2025", role: "Open Source Contributor", company: "GirlScript Summer of Code (GSSOC)", description: "Contributed to multiple open-source repositories, optimization patches, and UI modules. Collaborated with maintainers via GitHub workflows to resolve production codebase issues.", glow: "#a855f7" },
 ];
 
 export default function Experience() {
